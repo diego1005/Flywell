@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+}
+body {
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+header {
+    display: flex;
+    height: 15vh;
+    border: 1px solid transparent;
+    margin: 2px;
+    background-color: rgba(88,87,85,0.3);
+}
+hr {
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: 2px solid rgba(48,47,45,0.7);
+}
+.header-left {
+    width: 50%;
+    text-align: center;
+    /* border: 1px solid black; */
+    margin: 2px;
+}
+.header-left img {
+    height: 100%;
+    margin-right: 25%;
+}
+.header-right {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+.main-menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+}
+.main-menu a {
+    color: lightgrey;
+    font-size: 2em;
+    text-decoration: none;
+}
+.main-menu a:hover {
+    color: rgb(28,27,25);
+}
+.lower-menu {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(31,31,31,0.5);
+}
+.lower-menu a {
+    font-size: 1.5em;
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+    background: transparent;
+    text-decoration: none;
+    color: lightgrey;
+    padding: 1%;
+}
+.lower-menu a:hover {
+    background-color: rgb(38,37,35);
+}
+section {
+    height: 100vh;
+    background-color: rgba(58,57,55,0.7);
+}
+form {
+    height: 60%;
+    display: none;
+    flex-direction: column;
+}
+.contain {
+    display: flex;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.content {
+    width: 100%;
+    padding-left: 5.3%;
+}
+.service-content {
+    width: 100%;
+    align-items: center;
+}
+.destiny-content {
+    display: flex;
+    width: 100%;
+}
+.destiny {
+    display: block;
+    width: 50%;
+    height: 70%;
+    margin: auto 2%;
+}
+.field {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1% 2%;
+}
+label {
+    width: 14%;
+    color: lightgrey;
+    font-size: 1.5em;
+    text-align: start;
+    margin-left: 1.5%;
+}
+.service-content input {
+    width: 30px;
+    height: 30px;
+}
+section h3 {
+    float: left;
+    color: lightgrey;
+    font-size: 2em;
+    margin: auto 1%;
+}
+.cape {
+    width: 100%;
+    height: 17%;
+    /* position: absolute; */
+    /* background-color: lightgrey; */
+    color: white;
+    text-align: center;
+}
+.cape input {
+    font-size: 1.5em;
+}
+.cape input::placeholder {
+    font-size: 1em;
+    color: rgba(9,9,9,0.2);
+}
+.cape button {
+    font-size: 1.5em;
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+    background: transparent;
+    color: lightgrey;
+    margin: 2%;
+}
+.cape button:hover {
+    transform: scale(0.9);
+    opacity: 0.5;
+}
+#send {
+    font-size: 1.5em;
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+    background: transparent;
+    color: lightgrey;
+    margin: 3% 10%;
+}
+table {
+    border-left: 1px solid black;
+    margin: 0 auto;
+}
+th, td {
+    width: auto;
+    text-align: center;
+    border-left: 12px solid transparent;
+}
+td input {
+    width: auto;
+}
+.search-table-cont {
+    display: none;
+    flex-direction: inherit;
+    width: 100%;
+    margin: 0 auto;
+}
+.search-table-head {
+    margin-left: 8%;
+}
+.search-table-body{
+    margin-left: 5%;
+}

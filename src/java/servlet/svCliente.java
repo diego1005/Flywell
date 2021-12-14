@@ -43,7 +43,8 @@ public class svCliente extends HttpServlet {
         } catch (ParseException ex) {
         }
         
-        Cliente cli = new Cliente(1, dni, nombre, apellido, direccion, telefono, email, nacionalidad, f_nacim);
+        Cliente cli = new Cliente(1, dni, nombre, apellido, direccion, telefono, 
+                email, nacionalidad, f_nacim);
         
         control.crearCliente(cli);
         response.sendRedirect("client.jsp");

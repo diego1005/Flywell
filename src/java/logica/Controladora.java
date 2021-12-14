@@ -111,4 +111,12 @@ public class Controladora {
         return control.findVenta(id);
     }
 
+    public boolean validateClient(int id) {
+        if (control.findClient(id) != null) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }

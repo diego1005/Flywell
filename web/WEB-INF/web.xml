@@ -8,6 +8,14 @@
         <servlet-name>svCliente</servlet-name>
         <servlet-class>servlet.svCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>svEmpleado</servlet-name>
+        <servlet-class>servlet.svEmpleado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>svVenta</servlet-name>
+        <servlet-class>servlet.svVenta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>svUser</servlet-name>
         <url-pattern>/svUser</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>svCliente</servlet-name>
         <url-pattern>/svCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>svEmpleado</servlet-name>
+        <url-pattern>/svEmpleado</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>svVenta</servlet-name>
+        <url-pattern>/svVenta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
