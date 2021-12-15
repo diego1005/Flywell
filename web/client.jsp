@@ -18,6 +18,19 @@
     </head>
 
     <body>
+
+        <%
+            HttpSession mysession = request.getSession();
+            String usuario = (String) mysession.getAttribute("usuario");
+            if (usuario == null) {
+        %>
+        <script>
+            alert("Usuario incorrecto");
+        </script>
+        <%    response.sendRedirect("login.jsp");
+        } else {
+        %>
+
         <header>
             <div class="header-left">
                 <img src="./assets/img/logo.png" alt="logo">
@@ -84,7 +97,8 @@
                             <% if (!listaClientes.isEmpty()) {
                                     for (Cliente cli : listaClientes) { %>
                             <tr>
-                                <%  String dni = cli.getDni();
+                                <%  int id = cli.getId_cliente();
+                                    String dni = cli.getDni();
                                     Date f_nac = cli.getFecha_nac();
                                     String direccion = cli.getDireccion();
                                     String email = cli.getEmail();
@@ -97,23 +111,26 @@
                                 <td><%=email%></td>
                                 <td><%=tel%></td>
                                 <td><%=nacion%></td>
-                                <td><button type="button" name="ecform" id="ecform" onclick="capaClient('ecform')">Editar</button></td>
-                                <td><button type="button" name="dcform" id="dcform" onclick="capaClient('dcform')">Eliminar</button></td>
-                                <%}
-                                } else {%>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <%}%>
-                            </tr>
+                                <td><button type="submit" name="ecform" id="ecform">Editar</button></td>
+                        <form action="svCliente" method="post">
+                            <input type="hidden" name="id" value="<%=id%>">
+                            <td><button type="submit" name="dcform" id="dcform">Eliminar</button></td>
+                        </form>
+                        <%}
+                        } else {%>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <%}%>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <form action="" method="" >
+            <form action="svCliente" method="post" >
                 <div class="table-cont" id="new-element">
                     <div class="new-element-head">
                         <table>
@@ -122,7 +139,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input class="new" type="text" name="new-nombre">
+                                    <input class="new-head" type="text" name="name" 
+                                           placeholder="Nombre" required>
+                                    <input class="new-head" type="text" name="lastname" 
+                                           placeholder="Apellido" required="">
                                 </td>
                             </tr>
                         </table>
@@ -139,12 +159,12 @@
                                 <th>AGREGAR</th>
                             </tr>
                             <tr>
-                                <td><input class="new" type="text" name="new-dni"></td>
-                                <td><input class="new" type="date" name="new-birth"></td>
-                                <td><input class="new" type="text" name="new-address""></td>
-                                <td><input class="new" type="email" name="new-email"></td>
-                                <td><input class="new" type="text" name="new-phone"></td>
-                                <td><input class="new" type="text" name="new-nac"></td>
+                                <td><input class="new" type="text" name="dni" required></td>
+                                <td><input class="new" type="date" name="birth" required></td>
+                                <td><input class="new" type="text" name="address" required></td>
+                                <td><input class="new" type="email" name="email" required></td>
+                                <td><input class="new" type="text" name="phone" required></td>
+                                <td><input class="new" type="text" name="nac" required></td>
                                 <td><input id="send" type="submit" value="+"></td>
                             </tr>
                         </table>
@@ -152,6 +172,7 @@
                 </div>
             </form>
         </section>
+        <%}%>
     </body>
 
 </html>

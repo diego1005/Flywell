@@ -1,7 +1,7 @@
+<%@page import="logica.Controladora"%>
 <%@page import="java.util.Date"%>
 <%@page import="logica.Empleado"%>
 <%@page import="java.util.List"%>
-<%@page import="logica.Controladora"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,6 +18,19 @@
     </head>
 
     <body>
+
+        <%
+            HttpSession mysession = request.getSession();
+            String usuario = (String) mysession.getAttribute("usuario");
+            if (usuario == null) {
+        %>
+        <script>
+            alert("Usuario incorrecto");
+        </script>
+        <%    response.sendRedirect("login.jsp");
+        } else {
+        %>
+
         <header>
             <div class="header-left">
                 <img src="./assets/img/logo.png" alt="logo">
@@ -148,14 +161,14 @@
                                 <th>SUELDO</th>
                             </tr>
                             <tr>
-                                <td><input class="new" type="text" name="new-dni"></td>
-                                <td><input class="new" type="date" name="new-birth"></td>
-                                <td><input class="new" type="text" name="new-address""></td>
-                                <td><input class="new" type="email" name="new-email"></td>
-                                <td><input class="new" type="text" name="new-phone"></td>
-                                <td><input class="new" type="text" name="new-nac"></td>
-                                <td><input class="new" type="text" name="new-pos"></td>
-                                <td><input class="new" type="text" name="new-salary"></td>
+                                <td><input class="new" type="text" name="new-dni" required></td>
+                                <td><input class="new" type="date" name="new-birth" required></td>
+                                <td><input class="new" type="text" name="new-address" required></td>
+                                <td><input class="new" type="email" name="new-email" required></td>
+                                <td><input class="new" type="text" name="new-phone" required></td>
+                                <td><input class="new" type="text" name="new-nac" required></td>
+                                <td><input class="new" type="text" name="new-pos" required></td>
+                                <td><input class="new" type="text" name="new-salary" required></td>
                             </tr>
                         </table>
                     </div>
@@ -168,14 +181,15 @@
                             <th>AGREGAR</th>
                         </tr>
                         <tr>
-                            <td><input class="new" type="text" name="new-user"></td>
-                            <td><input class="new" type="password" name="new-pass"></td>
+                            <td><input class="new" type="text" name="new-user" required></td>
+                            <td><input class="new" type="password" name="new-pass" required></td>
                             <td><input id="send" type="submit" name="crearEmpleado" value="+"></td>
                         </tr>
                     </table>
                 </div>
             </form>
         </section>
+        <%}%>
     </body>
 
 </html>

@@ -176,11 +176,20 @@ td input {
 .search-table-head, .new-element-head {
     display: flex;
 }
+.new-head {
+    width: 50%;
+    text-align: center;
+}
+.new-head::placeholder {
+    opacity: 0.5;
+}
 .search-table-body{
     margin-left: 1%;
 }
 .new-element-head, .new-element-body {
+    margin-top: 2%;
     text-align: center;
+    border-top: 1px solid black;
 }
 .new-element-second {
     display: none;

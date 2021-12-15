@@ -59,4 +59,7 @@ function capaOrder(name) {
 
     }
 }
+function alertaLogin() {
+    alert("Usuario no validado");
+}
 

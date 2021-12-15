@@ -14,6 +14,18 @@
     </head>
 
     <body>
+
+        <%
+            HttpSession mysession = request.getSession();
+            String usuario = (String) mysession.getAttribute("usuario");
+            if (usuario == "invalido") {
+        %>
+        <script>
+            alert("Usuario incorrecto");
+        </script>
+        <%  session.invalidate();
+            }%>
+        
         <header>
             <div class="header-left">
                 <img src="./assets/img/logo.png" alt="logo">
@@ -28,15 +40,14 @@
             </div>
         </header>
         <section>
-            <form action="" method="" id="">
+            <form action="svUser" method="post">
                 <div class="login">
-                    <input type="text" id="usuario" placeholder="Usuario">
-                    <input type="password" id="pass" placeholder="Contraseña">
+                    <input type="text" id="usuario" name="user" placeholder="Usuario" required>
+                    <input type="password" id="pass" name="pass" placeholder="Contraseña" required>
                     <input type="submit" id="btn_login" value="Login">
                     <p>ó</p>
-                    <input type="button" id="btn_reg" onclick="location.href='employee.jsp'" 
+                    <input type="button" id="btn_reg" onclick="location.href = 'employee.jsp'" 
                            value="Alta Empleado"><br>
-                    
                 </div>
             </form>
         </section>

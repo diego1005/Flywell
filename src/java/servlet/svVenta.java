@@ -60,13 +60,13 @@ public class svVenta extends HttpServlet {
         String excursions = request.getParameter("excursions");
         String events = request.getParameter("events");
 
-        Venta venta = new Venta(num_venta, modo_pago, fecha_venta);
+//        Venta venta = new Venta(num_venta, modo_pago, fecha_venta);
 
-        if (!control.validateClient(id)) {
-            control.crearCliente(cli);
-        }
+//        if (!control.validateClient(id)) {
+//            control.crearCliente(cli);
+//        }
         
-        control.crearVenta(venta);
+//        control.crearVenta(venta);
         response.sendRedirect("client.jsp");
     }
 
