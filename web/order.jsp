@@ -1,4 +1,3 @@
-<%@page import="logica.Servicio"%>
 <%@page import="java.util.Date"%>
 <%@page import="logica.Venta"%>
 <%@page import="java.util.List"%>
@@ -35,91 +34,20 @@
         <nav class="lower-menu">
             <a href="client.jsp">Cliente</a>
             <a href="employee.jsp">Empleado</a>
-            <a href="order.jsp">Orden</a>
+            <a href="order.jsp" style="background-color: rgb(38,37,35)">Orden</a>
         </nav>
         <section>
             <div class="cape">
-                <input type="text" name="search" id="search" placeholder="Ingrese Numero de Venta">
+                <input type="text" name="search" id="search" placeholder="Ingrese nro de venta">
                 <button type="button" name="soform" id="soform" onclick="capaOrder('soform')">Buscar</button>
-                <button type="button" name="foform" id="noform" onclick="capaOrder('noform')">+</button>
+                <button type="button" name="noform" id="noform" onclick="capaOrder('noform')">+</button>
             </div>
-            <form action="svVenta" method="post" id="form">
-                <div class="contain">
-                    <h3 id="separator">Cliente:</h3>
-                    <div class="content">
-                        <div class="field">
-                            <label for="name">Nombre:</label><br>
-                            <input type="text" name="name" required>
-                            <label for="lastname">Apellido:</label>
-                            <input type="text" name="lastname" required>
-                            <label for="dni">DNI:</label>
-                            <input type="text" name="dni" required>
-                        </div>
-                        <div class="field">
-                            <label for="address">Direccion:</label>
-                            <input type="text" name="address" required>
-                            <label for="phone">Telefono:</label>
-                            <input type="text" name="phone" required>
-                            <label for="email">E-Mail:</label>
-                            <input type="text" name="email" required>
-                        </div>
-                        <div class="field">
-                            <label for="nac">Nacionalidad:</label>
-                            <input type="text" name="nac" required>
-                            <label for="birth">Fecha de Nac.:</label>
-                            <input type="date" name="birth" required>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="contain">
-                    <h3 id="separator">Destino:</h3>
-                    <div class="destiny-content">
-                        <select class="destiny" name="destiny">
-                            <option value="Argentina">Argentina</option>
-                            <option value="Brasil">Brasil</option>
-                            <option value="Uruguay">Uruguay</option>
-                            <option value="Bolivia">Bolivia</option>
-                            <option value="Paraguay">Paraguay</option>
-                            <option value="Chile">Chile</option>
-                        </select>
-                    </div>
-                </div>
-                <hr>
-                <div class="contain">
-                    <h3 id="separator">Servicio:</h3>
-                    <div class="service-content">
-                        <div class="field">
-                            <input type="checkbox" name="hotel" required>
-                            <label for="hotel">Reserva Hotel</label><br>
-                            <input type="checkbox" name="rent-car" required>
-                            <label for="rent-car">Alquiler Auto</label>
-                        </div>
-                        <div class="field">
-                            <input type="checkbox" name="bus" required>
-                            <label for="bus">Ticket Colectivo</label>
-                            <input type="checkbox" name="plane" required>
-                            <label for="plane">Ticket Avion</label>
-                            <input type="checkbox" name="train" required>
-                            <label for="train">Ticket Tren</label>
-                        </div>
-                        <div class="field">
-                            <input type="checkbox" name="excursions" required>
-                            <label for="excursions">Excursiones</label>
-                            <input type="checkbox" name="events" required>
-                            <label for="events">Ticket Eventos</label>
-                        </div>
-                    </div>
-                </div>
-                <input id="send" type="submit" name="crearVenta" value="Agregar">
-            </form>
-
-            <div class="search-table-cont" id="search-table">
+            <div class="table-cont" id="search-table">
                 <div class="search-table-head">
                     <table>
                         <thead>
                             <tr>
-                                <th>VENTA</th>
+                                <th>EMPLEADO</th>
                             </tr>
                         </thead>    
                         <tbody>
@@ -128,10 +56,11 @@
                                 if (!listaVentas.isEmpty()) {
                                     for (Venta venta : listaVentas) { %>
                             <tr>
-                                <% String nombreCli = venta.getCliente().getNombre() 
-                                        + " " + venta.getCliente().getApellido();%>
-                                <td><%=nombreCli%></td>
-                                <%}}else{%>
+                                <% String nombre = venta.getEmpleado().getNombre() 
+                                        + " " + venta.getEmpleado().getApellido();%>
+                                <td><%=nombre%></td>
+                                <%}
+                                } else {%>
                                 <td>No hay datos</td>
                                 <%}%>
                             </tr>
@@ -143,7 +72,7 @@
                         <thead>
                             <tr>
                                 <th>NRO VENTA</th>
-                                <th>EMPLEADO</th>
+                                <th>CLIENTE </th>
                                 <th>MODO DE PAGO</th>
                                 <th>FECHA DE VENTA</th>
                                 <th>SERVICIOS</th>
@@ -153,7 +82,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <%  if (!listaVentas.isEmpty()) {
+                            <% if (!listaVentas.isEmpty()) {
                                     for (Venta venta : listaVentas) { %>
                             <tr>
                                 <%  int nro = venta.getNum_venta();
@@ -170,8 +99,8 @@
                                 <td><%=f_vent%></td>
                                 <td><%=servicio%></td>
                                 <td><%=paquete%></td>
-                                <td><button type="button" name="ecform" id="eeform" onclick="capaEmployee('eeform')">Editar</button></td>
-                                <td><button type="button" name="dcform" id="deform" onclick="capaEmployee('deform')">Eliminar</button></td>
+                                <td><button type="button" name="eoform" id="eoform" onclick="capaOrder('eoform')">Editar</button></td>
+                                <td><button type="button" name="doform" id="doform" onclick="capaOrder('doform')">Eliminar</button></td>
                                 <%}
                                 } else {%>
                                 <td>No hay datos</td>
@@ -186,8 +115,45 @@
                     </table>
                 </div>
             </div>
+            <form action="" method="" >
+                <div class="table-cont" id="new-element">
+                    <div class="new-element-head">
+                        <table>
+                            <tr>
+                                <th>EMPLEADO</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="new" type="text" name="new-empleado">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="new-element-body">
+                        <table>
+                            <tr>
+                                <th>NRO VENTA</th>
+                                <th>CLIENTE</th>
+                                <th>MODO DE PAGO</th>
+                                <th>FECHA DE VENTA</th>
+                                <th>SERVICIO</th>
+                                <th>NRO PAQUETE</th>
+                                <th>AGREGAR</th>
+                            </tr>
+                            <tr>
+                                <td><input class="new" type="number" name="new-nro_venta"></td>
+                                <td><input class="new" type="text" name="new-cliente"></td>
+                                <td><input class="new" type="text" name="new-pago""></td>
+                                <td><input class="new" type="date" name="new-f_venta"></td>
+                                <td><input class="new" type="text" name="new-servicio"></td>
+                                <td><input class="new" type="number" name="new-nro paquete"></td>
+                                <td><input id="send" type="submit" name="crearVenta" value="+"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </form>
         </section>
     </body>
 
 </html>
-

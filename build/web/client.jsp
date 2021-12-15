@@ -32,7 +32,7 @@
             </div>
         </header>
         <nav class="lower-menu">
-            <a href="client.jsp">Cliente</a>
+            <a href="client.jsp" style="background-color: rgb(38,37,35)">Cliente</a>
             <a href="employee.jsp">Empleado</a>
             <a href="order.jsp">Orden</a>
         </nav>
@@ -42,37 +42,7 @@
                 <button type="button" name="scform" id="scform" onclick="capaClient('scform')">Buscar</button>
                 <button type="button" name="ncform" id="ncform" onclick="capaClient('ncform')">+</button>
             </div>
-<!--            <form action="svCliente" method="post" id="form">
-                <div class="contain">
-                    <div class="content">
-                        <div class="field">
-                            <label for="name">Nombre:</label><br>
-                            <input type="text" name="name" required>
-                            <label for="lastname">Apellido:</label>
-                            <input type="text" name="lastname" required>
-                            <label for="dni">DNI:</label>
-                            <input type="text" name="dni" required>
-                        </div>
-                        <div class="field">
-                            <label for="address">Direccion:</label>
-                            <input type="text" name="address" required>
-                            <label for="phone">Telefono:</label>
-                            <input type="text" name="phone" required>
-                            <label for="email">E-Mail:</label>
-                            <input type="text" name="email" required>
-                        </div>
-                        <div class="field">
-                            <label for="nac">Nacionalidad:</label>
-                            <input type="text" name="nac" required>
-                            <label for="birth">Fecha de Nac.:</label>
-                            <input type="date" name="birth" required>
-                        </div>
-                    </div>
-                </div>
-                <input id="send" type="submit" name="crearCliente" value="Agregar">
-            </form>-->
-
-            <div class="search-table-cont" id="search-table">
+            <div class="table-cont" id="search-table">
                 <div class="search-table-head">
                     <table>
                         <thead>
@@ -129,7 +99,8 @@
                                 <td><%=nacion%></td>
                                 <td><button type="button" name="ecform" id="ecform" onclick="capaClient('ecform')">Editar</button></td>
                                 <td><button type="button" name="dcform" id="dcform" onclick="capaClient('dcform')">Eliminar</button></td>
-                                <%}}else{%>
+                                <%}
+                                } else {%>
                                 <td>No hay datos</td>
                                 <td>No hay datos</td>
                                 <td>No hay datos</td>
@@ -142,50 +113,44 @@
                     </table>
                 </div>
             </div>
-            <div class="search-table-cont" id="new-element">
-                <div class="search-table-head">
-                    <table>
-<!--                        <thead>
+            <form action="" method="" >
+                <div class="table-cont" id="new-element">
+                    <div class="new-element-head">
+                        <table>
                             <tr>
                                 <th>CLIENTE</th>
                             </tr>
-                        </thead>    -->
-                        <tbody>
                             <tr>
                                 <td>
-                                    <input type="text" name="new-nombre" id="new">
+                                    <input class="new" type="text" name="new-nombre">
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="search-table-body">
-                    <table>
-                        <!--<thead>-->
-<!--                            <tr>
+                        </table>
+                    </div>
+                    <div class="new-element-body">
+                        <table>
+                            <tr>
                                 <th>DNI</th>
                                 <th>FECHA DE NACIMIENTO</th>
                                 <th>DIRECCION</th>
                                 <th>EMAIL</th>
                                 <th>TELEFONO</th>
                                 <th>NACIONALIDAD</th>
-                                <th>EDITAR</th>
-                                <th>ELIMINAR</th>
+                                <th>AGREGAR</th>
                             </tr>
-                        </thead>-->
-                        <tbody>
                             <tr>
-                                <td><input type="text" name="new-dni"></td>
-                                <td><input type="text" name="new-birth"></td>
-                                <td><input type="text" name="new-address""></td>
-                                <td><input type="text" name="new-email"></td>
-                                <td><input type="text" name="new-phone"></td>
-                                <td><input type="text" name="new-nac"></td>
+                                <td><input class="new" type="text" name="new-dni"></td>
+                                <td><input class="new" type="date" name="new-birth"></td>
+                                <td><input class="new" type="text" name="new-address""></td>
+                                <td><input class="new" type="email" name="new-email"></td>
+                                <td><input class="new" type="text" name="new-phone"></td>
+                                <td><input class="new" type="text" name="new-nac"></td>
+                                <td><input id="send" type="submit" value="+"></td>
                             </tr>
-                        </tbody>
-                    </table>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            </form>
         </section>
     </body>
 

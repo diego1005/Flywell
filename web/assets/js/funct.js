@@ -23,12 +23,11 @@ function capaEmployee(name) {
         case "seform":
             console.log("boton buscar");
             document.getElementById("search-table").style.display = "flex";
-            document.getElementById("form").style.display = "none";
             break;
         case "neform":
             console.log("boton nuevo");
-            document.getElementById("form").style.display = "flex";
-            document.getElementById("search-table").style.display = "none";
+            document.getElementById("new-element").style.display = "flex";
+            document.getElementById("new-user").style.display = "flex";
             break;
         case "eeform":
             console.log("boton editar");
@@ -45,12 +44,10 @@ function capaOrder(name) {
         case "soform":
             console.log("boton buscar");
             document.getElementById("search-table").style.display = "flex";
-            document.getElementById("form").style.display = "none";
             break;
         case "noform":
             console.log("boton nuevo");
-            document.getElementById("form").style.display = "flex";
-            document.getElementById("search-table").style.display = "none";
+            document.getElementById("new-element").style.display = "flex";
             break;
         case "eoform":
             console.log("boton editar");

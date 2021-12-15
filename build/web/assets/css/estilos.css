@@ -68,11 +68,11 @@ section {
     height: 100vh;
     background-color: rgba(58,57,55,0.7);
 }
-form {
+/*form {
     height: 60%;
     display: none;
     flex-direction: column;
-}
+}*/
 .contain {
     display: flex;
     margin-top: 1%;
@@ -150,7 +150,7 @@ section h3 {
     font-size: 1.5em;
     font-family: Montserrat, sans-serif;
     font-weight: bold;
-    background: transparent;
+    background-color: rgba(0,128,0,0.5);
     color: lightgrey;
     margin: 3% 10%;
 }
@@ -158,23 +158,79 @@ table {
     border-left: 1px solid black;
     margin: 0 auto;
 }
-th, td {
+.search-table-head th, .search-table-body th, .search-table-head td, .search-table-body td {
     width: auto;
     text-align: center;
     border-left: 12px solid transparent;
 }
 td input {
-    width: auto;
+    width: 75%;
 }
-.search-table-cont {
+.table-cont {
     display: none;
-    flex-direction: inherit;
-    width: 100%;
-    margin: 0 auto;
+    /*flex-direction: inherit;*/
+    justify-content: space-evenly;
+    /*width: 100%;*/
+    margin-top: 1.5%;
 }
-.search-table-head {
-    margin-left: 8%;
+.search-table-head, .new-element-head {
+    display: flex;
 }
 .search-table-body{
-    margin-left: 5%;
+    margin-left: 1%;
+}
+.new-element-head, .new-element-body {
+    text-align: center;
+}
+.new-element-second {
+    display: none;
+    margin-right: 1%;
+    float: right;
+    text-align: center;
+    margin-top: 2%;
+}
+.new-element-second table {
+    border: none;
+    margin-top: 2%;
+}
+#dcform, #deform {
+    background-color: rgba(220,20,60,0.5);
+}
+#eeform, #ecform {
+    background-color: rgba(70,130,180,0.5);
+}
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-left: 10%;
+    padding-top: 5%;
+}
+.login input {
+    display: flex;
+    flex-direction: column;
+    font-size: 2.5em;
+    margin-top: 3%;
+    text-align: center;
+    border-radius: 25px;
+}
+.login input::placeholder {
+    color: rgba(9,9,9,0.3);
+}
+#btn_login {
+    font-size: 1.5em;
+    margin-top: 1%;
+    align-items: center;
+    background-color: rgb(47,79,79);
+    color: #917254
+}
+#btn_reg {
+    font-size: 1.5em;
+    align-items: center;
+    background-color: rgb(47,79,79);
+    color: #917254;
+    margin-top: 0;
+}
+.login p {
+    text-align: center;
 }
