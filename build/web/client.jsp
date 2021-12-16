@@ -97,7 +97,7 @@
                             <% if (!listaClientes.isEmpty()) {
                                     for (Cliente cli : listaClientes) { %>
                             <tr>
-                                <%  int id = cli.getId_cliente();
+                                <%  int id = cli.getId_persona();
                                     String dni = cli.getDni();
                                     Date f_nac = cli.getFecha_nac();
                                     String direccion = cli.getDireccion();
@@ -111,7 +111,8 @@
                                 <td><%=email%></td>
                                 <td><%=tel%></td>
                                 <td><%=nacion%></td>
-                                <td><button type="submit" name="ecform" id="ecform">Editar</button></td>
+                        <input type="hidden" name="id" id="nid" value="<%=id%>">
+                        <td><button type="button" name="ecform" onclick="capaEmployee('edit')" id="ecform">Editar</button></td>
                         <form action="svCliente" method="post">
                             <input type="hidden" name="id" value="<%=id%>">
                             <td><button type="submit" name="dcform" id="dcform">Eliminar</button></td>
@@ -166,6 +167,49 @@
                                 <td><input class="new" type="text" name="phone" required></td>
                                 <td><input class="new" type="text" name="nac" required></td>
                                 <td><input id="send" type="submit" value="+"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </form>
+            <form action="svCliente" method="post" >
+                <div class="table-cont" id="edit-element">
+                    <div class="new-element-head">
+                        <table>
+                            <tr>
+                                <th>CLIENTE</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="new-head" type="text" name="name" 
+                                           placeholder="Nombre" required>
+                                    <input class="new-head" type="text" name="lastname" 
+                                           placeholder="Apellido" required="">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="new-element-body">
+                        <table>
+                            <tr>
+                                <th>DNI</th>
+                                <th>FECHA DE NACIMIENTO</th>
+                                <th>DIRECCION</th>
+                                <th>EMAIL</th>
+                                <th>TELEFONO</th>
+                                <th>NACIONALIDAD</th>
+                                <th>MODIFICAR</th>
+                            </tr>
+                            <tr>
+                            <input type="hidden" name="id" value="capaEmployee('get')">
+                            <input type="hidden" name="edit" value="edit">
+                            <td><input class="new" type="text" name="dni" required></td>
+                            <td><input class="new" type="date" name="birth" required></td>
+                            <td><input class="new" type="text" name="address" required></td>
+                            <td><input class="new" type="email" name="email" required></td>
+                            <td><input class="new" type="text" name="phone" required></td>
+                            <td><input class="new" type="text" name="nac" required></td>
+                            <td><input id="send" type="submit" value="+"></td>
                             </tr>
                         </table>
                     </div>

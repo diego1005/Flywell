@@ -3,7 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +27,13 @@ public class svCliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-            String id = request.getParameter("id");
-        if (id == null) {
+        //Parametro Eliminacion
+        String id = request.getParameter("id");
+        //Parametro Modificacion
+        String edit = request.getParameter("edit");
+
+        if (id == null && !edit.equals("edit")) {
+            //Parametros Alta
             String dni = request.getParameter("dni");
             String nombre = request.getParameter("name");
             String apellido = request.getParameter("lastname");
@@ -36,25 +41,26 @@ public class svCliente extends HttpServlet {
             String telefono = request.getParameter("phone");
             String email = request.getParameter("email");
             String nacionalidad = request.getParameter("nac");
-            String nacimiento = request.getParameter("birth");
-            SimpleDateFormat f_nac = new SimpleDateFormat("dd/mm/yyyy");
-            Date f_nacim = new Date();
-            try {
-                f_nacim = f_nac.parse(nacimiento);
-            } catch (ParseException ex) {
-            }
+            Date nacimiento = Date.valueOf(request.getParameter("birth"));
 
-            Cliente cli = new Cliente(dni, nombre, apellido, direccion, telefono, 
-                    email, nacionalidad, f_nacim);
+            //Alta
+            Cliente cli = new Cliente(dni, nombre, apellido, direccion, telefono,
+                    email, nacionalidad, nacimiento);
 
             control.crearCliente(cli);
             response.sendRedirect("client.jsp");
 
-        } else {
+            //Eliminacion
+        } else if (id != null && !edit.equals("edit")) {
             int nid = Integer.parseInt(id);
             control.eliminarCliente(nid);
             request.getSession().setAttribute("listaClientes", control.listarClientes());
             response.sendRedirect("client.jsp");
+        } else if (id != null && edit.equals("edit")) {
+            //Modificacion
+            System.out.println("estamos en zona");
+//            int nid = Integer.parseInt(id);
+//            Cliente cliente = control.listarCliente(nid);
         }
     }
 

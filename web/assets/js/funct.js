@@ -27,16 +27,21 @@ function capaEmployee(name) {
         case "neform":
             console.log("boton nuevo");
             document.getElementById("new-element").style.display = "flex";
+            document.getElementById("cont-user").style.display = "flex";
+            break;
+        case "edit":
+            console.log("boton editar");
+            let id = document.getElementById("nid");
+            document.getElementById("edit-element").style.display = "flex";
+            break;
+        case "get":
+            console.log("boton obtener");
+            return id;
+            break;
+        case "user":
             document.getElementById("new-user").style.display = "flex";
             break;
-        case "eeform":
-            console.log("boton editar");
-            break;
-        case "deform":
-            console.log("boton eliminar");
-            break;
         default:
-
     }
 }
 function capaOrder(name) {
@@ -58,8 +63,5 @@ function capaOrder(name) {
         default:
 
     }
-}
-function alertaLogin() {
-    alert("Usuario no validado");
 }
 

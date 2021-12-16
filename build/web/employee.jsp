@@ -22,7 +22,7 @@
         <%
             HttpSession mysession = request.getSession();
             String usuario = (String) mysession.getAttribute("usuario");
-            if (usuario == null) {
+            if (usuario == "invalido") {
         %>
         <script>
             alert("Usuario incorrecto");
@@ -99,7 +99,8 @@
                             <% if (!listaEmpleados.isEmpty()) {
                                     for (Empleado emp : listaEmpleados) { %>
                             <tr>
-                                <%  String dni = emp.getDni();
+                                <%  int id = emp.getId_persona();
+                                    String dni = emp.getDni();
                                     Date f_nac = emp.getFecha_nac();
                                     String direccion = emp.getDireccion();
                                     String email = emp.getEmail();
@@ -116,20 +117,27 @@
                                 <td><%=nacion%></td>
                                 <td><%=cargo%></td>
                                 <td><%=sueldo%></td>
-                                <td><button type="button" name="eeform" id="eeform" onclick="capaEmployee('eeform')">Editar</button></td>
-                                <td><button type="button" name="deform" id="deform" onclick="capaEmployee('deform')">Eliminar</button></td>
-                                <%}
-                                } else {%>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <td>No hay datos</td>
-                                <%}%>
-                            </tr>
+                        <form action="svEmpleado" method="post">
+                            <input type="hidden" name="id" value="<%=id%>">
+                            <input type="hidden" name="edit" value="edit">
+                            <td><button type="submit" name="eeform" id="eeform">Editar</button></td>
+                        </form>
+                        <form action="svEmpleado" method="post">
+                            <input type="hidden" name="id" value="<%=id%>">
+                            <td><button type="submit" name="deform" id="deform">Eliminar</button></td>
+                        </form>
+                        <%}
+                        } else {%>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <td>No hay datos</td>
+                        <%}%>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -170,26 +178,32 @@
                                 <td><input class="new" type="text" name="nac" required></td>
                                 <td><input class="new" type="text" name="pos" required></td>
                                 <td><input class="new" type="text" name="salary" required></td>
-                            <td><input id="send" type="submit" name="crearEmpleado" value="+"></td>
+                                <td><input id="send" type="submit" name="crearEmpleado" value="+"></td>
                             </tr>
                         </table>
                     </div>
                 </div>
-<!--                <div class="new-element-second" id="new-user">
-                    <table>
-                        <tr>
-                            <th>USUARIO</th>
-                            <th>CONTRASEÑA</th>
-                            <th>AGREGAR</th>
-                        </tr>
-                        <tr>
-                            <td><input class="new" type="text" name="new-user" required></td>
-                            <td><input class="new" type="password" name="new-pass" required></td>
-                            <td><input id="send" type="submit" name="crearEmpleado" value="+"></td>
-                        </tr>
-                    </table>
-                </div>-->
             </form>
+            <div class="table-cont" id="cont-user">
+                <button type="button" id="user" onclick="capaEmployee('user')">Alta Usuario</button>
+            </div>
+            <div class="new-element-second" id="new-user">
+                <table>
+                    <tr>
+                        <th>USUARIO</th>
+                        <th>CONTRASEÑA</th>
+                        <th>AGREGAR</th>
+                    </tr>
+                    <tr>
+                    <form action="svUser" method="post">
+                        <td><input class="new" type="text" name="new-user" required></td>
+                        <td><input class="new" type="password" name="new-pass" required></td>
+                        <td><input id="send" type="submit" name="crearEmpleado" value="+"></td>
+                    </form>
+                    </tr>
+                </table>
+            </div>
+            <!--</form>-->
         </section>
         <%}%>
     </body>

@@ -147,12 +147,19 @@ section h3 {
     opacity: 0.5;
 }
 #send {
+    width: 100%;
     font-size: 1.5em;
     font-family: Montserrat, sans-serif;
     font-weight: bold;
     background-color: rgba(0,128,0,0.5);
     color: lightgrey;
-    margin: 3% 10%;
+    /*margin: 3% 10%;*/
+    text-align: center;
+}
+#user {
+    font-size: 1.5em;
+    color: lightgrey;
+    background-color: transparent;
 }
 table {
     border-left: 1px solid black;
@@ -193,10 +200,7 @@ td input {
 }
 .new-element-second {
     display: none;
-    margin-right: 1%;
-    float: right;
     text-align: center;
-    margin-top: 2%;
 }
 .new-element-second table {
     border: none;
