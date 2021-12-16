@@ -45,7 +45,8 @@ public class svEmpleado extends HttpServlet {
         String cargo = request.getParameter("pos");
         float sueldo = Float.parseFloat(request.getParameter("salary"));
         
-        Empleado emp = new Empleado(0, cargo, sueldo, dni, nombre, apellido, direccion, telefono, email, nacionalidad, f_nacim);
+        Empleado emp = new Empleado(cargo, sueldo, dni, nombre, apellido, direccion, 
+                telefono, email, nacionalidad, f_nacim);
         
         control.crearEmpleado(emp);
         response.sendRedirect("employee.jsp");

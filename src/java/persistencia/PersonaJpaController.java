@@ -11,7 +11,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import logica.Persona;
 import persistencia.exceptions.NonexistentEntityException;
-import persistencia.exceptions.PreexistingEntityException;
 
 public class PersonaJpaController implements Serializable {
 
@@ -28,18 +27,13 @@ public class PersonaJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Persona persona) throws PreexistingEntityException, Exception {
+    public void create(Persona persona) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(persona);
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findPersona(persona.getDni()) != null) {
-                throw new PreexistingEntityException("Persona " + persona + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();
@@ -57,7 +51,7 @@ public class PersonaJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                String id = persona.getDni();
+                int id = persona.getId_persona();
                 if (findPersona(id) == null) {
                     throw new NonexistentEntityException("The persona with id " + id + " no longer exists.");
                 }
@@ -70,7 +64,7 @@ public class PersonaJpaController implements Serializable {
         }
     }
 
-    public void destroy(String id) throws NonexistentEntityException {
+    public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -78,7 +72,7 @@ public class PersonaJpaController implements Serializable {
             Persona persona;
             try {
                 persona = em.getReference(Persona.class, id);
-                persona.getDni();
+                persona.getId_persona();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The persona with id " + id + " no longer exists.", enfe);
             }
@@ -115,7 +109,7 @@ public class PersonaJpaController implements Serializable {
         }
     }
 
-    public Persona findPersona(String id) {
+    public Persona findPersona(int id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Persona.class, id);

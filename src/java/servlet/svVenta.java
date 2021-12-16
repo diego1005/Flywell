@@ -45,7 +45,7 @@ public class svVenta extends HttpServlet {
         } catch (ParseException ex) {
         }
 
-        Cliente cli = new Cliente(1, dni, nombre, apellido, direccion, telefono,
+        Cliente cli = new Cliente(dni, nombre, apellido, direccion, telefono, 
                 email, nacionalidad, f_nacim);
 
         //Datos Destino

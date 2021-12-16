@@ -12,7 +12,6 @@ import javax.persistence.criteria.Root;
 import logica.Empleado;
 import logica.Usuario;
 import persistencia.exceptions.NonexistentEntityException;
-import persistencia.exceptions.PreexistingEntityException;
 
 public class UsuarioJpaController implements Serializable {
 
@@ -29,14 +28,14 @@ public class UsuarioJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Usuario usuario) throws PreexistingEntityException, Exception {
+    public void create(Usuario usuario) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             Empleado empleado = usuario.getEmpleado();
             if (empleado != null) {
-                empleado = em.getReference(empleado.getClass(), empleado.getId_empleado());
+                empleado = em.getReference(empleado.getClass(), empleado.getId_persona());
                 usuario.setEmpleado(empleado);
             }
             em.persist(usuario);
@@ -50,11 +49,6 @@ public class UsuarioJpaController implements Serializable {
                 empleado = em.merge(empleado);
             }
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findUsuario(usuario.getId_usuario()) != null) {
-                throw new PreexistingEntityException("Usuario " + usuario + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();
@@ -71,7 +65,7 @@ public class UsuarioJpaController implements Serializable {
             Empleado empleadoOld = persistentUsuario.getEmpleado();
             Empleado empleadoNew = usuario.getEmpleado();
             if (empleadoNew != null) {
-                empleadoNew = em.getReference(empleadoNew.getClass(), empleadoNew.getId_empleado());
+                empleadoNew = em.getReference(empleadoNew.getClass(), empleadoNew.getId_persona());
                 usuario.setEmpleado(empleadoNew);
             }
             usuario = em.merge(usuario);

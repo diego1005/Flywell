@@ -15,7 +15,6 @@ import logica.Servicio;
 import logica.PaqueteTuristico;
 import logica.Venta;
 import persistencia.exceptions.NonexistentEntityException;
-import persistencia.exceptions.PreexistingEntityException;
 
 public class VentaJpaController implements Serializable {
 
@@ -32,19 +31,19 @@ public class VentaJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Venta venta) throws PreexistingEntityException, Exception {
+    public void create(Venta venta) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             Empleado empleado = venta.getEmpleado();
             if (empleado != null) {
-                empleado = em.getReference(empleado.getClass(), empleado.getId_empleado());
+                empleado = em.getReference(empleado.getClass(), empleado.getId_persona());
                 venta.setEmpleado(empleado);
             }
             Cliente cliente = venta.getCliente();
             if (cliente != null) {
-                cliente = em.getReference(cliente.getClass(), cliente.getId_cliente());
+                cliente = em.getReference(cliente.getClass(), cliente.getId_persona());
                 venta.setCliente(cliente);
             }
             Servicio servicio = venta.getServicio();
@@ -75,11 +74,6 @@ public class VentaJpaController implements Serializable {
                 paquete = em.merge(paquete);
             }
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findVenta(venta.getNum_venta()) != null) {
-                throw new PreexistingEntityException("Venta " + venta + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();
@@ -102,11 +96,11 @@ public class VentaJpaController implements Serializable {
             PaqueteTuristico paqueteOld = persistentVenta.getPaquete();
             PaqueteTuristico paqueteNew = venta.getPaquete();
             if (empleadoNew != null) {
-                empleadoNew = em.getReference(empleadoNew.getClass(), empleadoNew.getId_empleado());
+                empleadoNew = em.getReference(empleadoNew.getClass(), empleadoNew.getId_persona());
                 venta.setEmpleado(empleadoNew);
             }
             if (clienteNew != null) {
-                clienteNew = em.getReference(clienteNew.getClass(), clienteNew.getId_cliente());
+                clienteNew = em.getReference(clienteNew.getClass(), clienteNew.getId_persona());
                 venta.setCliente(clienteNew);
             }
             if (servicioNew != null) {

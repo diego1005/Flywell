@@ -27,8 +27,8 @@ public class svCliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int id = Integer.parseInt(request.getParameter("id"));
-        if (id == 0) {
+            String id = request.getParameter("id");
+        if (id == null) {
             String dni = request.getParameter("dni");
             String nombre = request.getParameter("name");
             String apellido = request.getParameter("lastname");
@@ -44,14 +44,15 @@ public class svCliente extends HttpServlet {
             } catch (ParseException ex) {
             }
 
-            Cliente cli = new Cliente(1, dni, nombre, apellido, direccion, telefono,
+            Cliente cli = new Cliente(dni, nombre, apellido, direccion, telefono, 
                     email, nacionalidad, f_nacim);
 
             control.crearCliente(cli);
             response.sendRedirect("client.jsp");
 
         } else {
-            control.eliminarCliente(id);
+            int nid = Integer.parseInt(id);
+            control.eliminarCliente(nid);
             request.getSession().setAttribute("listaClientes", control.listarClientes());
             response.sendRedirect("client.jsp");
         }

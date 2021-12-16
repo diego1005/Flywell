@@ -13,7 +13,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import logica.Servicio;
 import persistencia.exceptions.NonexistentEntityException;
-import persistencia.exceptions.PreexistingEntityException;
 
 public class ServicioJpaController implements Serializable {
 
@@ -30,7 +29,7 @@ public class ServicioJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Servicio servicio) throws PreexistingEntityException, Exception {
+    public void create(Servicio servicio) {
         if (servicio.getListaVentas() == null) {
             servicio.setListaVentas(new ArrayList<Venta>());
         }
@@ -55,11 +54,6 @@ public class ServicioJpaController implements Serializable {
                 }
             }
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findServicio(servicio.getCod_servicio()) != null) {
-                throw new PreexistingEntityException("Servicio " + servicio + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();

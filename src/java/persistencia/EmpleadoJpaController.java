@@ -14,7 +14,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import logica.Empleado;
 import persistencia.exceptions.NonexistentEntityException;
-import persistencia.exceptions.PreexistingEntityException;
 
 public class EmpleadoJpaController implements Serializable {
 
@@ -31,7 +30,7 @@ public class EmpleadoJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Empleado empleado) throws PreexistingEntityException, Exception {
+    public void create(Empleado empleado) {
         if (empleado.getListaVentas() == null) {
             empleado.setListaVentas(new ArrayList<Venta>());
         }
@@ -70,11 +69,6 @@ public class EmpleadoJpaController implements Serializable {
                 }
             }
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findEmpleado(empleado.getId_empleado()) != null) {
-                throw new PreexistingEntityException("Empleado " + empleado + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();
@@ -87,7 +81,7 @@ public class EmpleadoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Empleado persistentEmpleado = em.find(Empleado.class, empleado.getId_empleado());
+            Empleado persistentEmpleado = em.find(Empleado.class, empleado.getId_persona());
             Usuario usuarioOld = persistentEmpleado.getUsuario();
             Usuario usuarioNew = empleado.getUsuario();
             List<Venta> listaVentasOld = persistentEmpleado.getListaVentas();
@@ -138,7 +132,7 @@ public class EmpleadoJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = empleado.getId_empleado();
+                int id = empleado.getId_persona();
                 if (findEmpleado(id) == null) {
                     throw new NonexistentEntityException("The empleado with id " + id + " no longer exists.");
                 }
@@ -159,7 +153,7 @@ public class EmpleadoJpaController implements Serializable {
             Empleado empleado;
             try {
                 empleado = em.getReference(Empleado.class, id);
-                empleado.getId_empleado();
+                empleado.getId_persona();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The empleado with id " + id + " no longer exists.", enfe);
             }

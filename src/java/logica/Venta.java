@@ -3,6 +3,8 @@ package logica;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -13,6 +15,7 @@ import javax.persistence.TemporalType;
 public class Venta implements Serializable {
     
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int num_venta;
     private String modo_pago;
     @Temporal(TemporalType.DATE)

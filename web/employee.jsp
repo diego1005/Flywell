@@ -134,7 +134,7 @@
                     </table>
                 </div>
             </div>
-            <form action="" method="" >
+            <form action="svEmpleado" method="post">
                 <div class="table-cont" id="new-element">
                     <div class="new-element-head">
                         <table>
@@ -143,7 +143,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input class="new" type="text" name="new-nombre">
+                                    <input class="new" type="text" name="name">
+                                    <input class="new" type="text" name="lastname">
                                 </td>
                             </tr>
                         </table>
@@ -161,19 +162,20 @@
                                 <th>SUELDO</th>
                             </tr>
                             <tr>
-                                <td><input class="new" type="text" name="new-dni" required></td>
-                                <td><input class="new" type="date" name="new-birth" required></td>
-                                <td><input class="new" type="text" name="new-address" required></td>
-                                <td><input class="new" type="email" name="new-email" required></td>
-                                <td><input class="new" type="text" name="new-phone" required></td>
-                                <td><input class="new" type="text" name="new-nac" required></td>
-                                <td><input class="new" type="text" name="new-pos" required></td>
-                                <td><input class="new" type="text" name="new-salary" required></td>
+                                <td><input class="new" type="text" name="dni" required></td>
+                                <td><input class="new" type="date" name="birth" required></td>
+                                <td><input class="new" type="text" name="address" required></td>
+                                <td><input class="new" type="email" name="email" required></td>
+                                <td><input class="new" type="text" name="phone" required></td>
+                                <td><input class="new" type="text" name="nac" required></td>
+                                <td><input class="new" type="text" name="pos" required></td>
+                                <td><input class="new" type="text" name="salary" required></td>
+                            <td><input id="send" type="submit" name="crearEmpleado" value="+"></td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <div class="new-element-second" id="new-user">
+<!--                <div class="new-element-second" id="new-user">
                     <table>
                         <tr>
                             <th>USUARIO</th>
@@ -186,7 +188,7 @@
                             <td><input id="send" type="submit" name="crearEmpleado" value="+"></td>
                         </tr>
                     </table>
-                </div>
+                </div>-->
             </form>
         </section>
         <%}%>

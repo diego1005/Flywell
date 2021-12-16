@@ -13,7 +13,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import logica.PaqueteTuristico;
 import persistencia.exceptions.NonexistentEntityException;
-import persistencia.exceptions.PreexistingEntityException;
 
 public class PaqueteTuristicoJpaController implements Serializable {
 
@@ -30,7 +29,7 @@ public class PaqueteTuristicoJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(PaqueteTuristico paqueteTuristico) throws PreexistingEntityException, Exception {
+    public void create(PaqueteTuristico paqueteTuristico) {
         if (paqueteTuristico.getListaVentas() == null) {
             paqueteTuristico.setListaVentas(new ArrayList<Venta>());
         }
@@ -55,11 +54,6 @@ public class PaqueteTuristicoJpaController implements Serializable {
                 }
             }
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findPaqueteTuristico(paqueteTuristico.getCod_paquete()) != null) {
-                throw new PreexistingEntityException("PaqueteTuristico " + paqueteTuristico + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();
