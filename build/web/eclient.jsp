@@ -1,4 +1,3 @@
-<%@page import="logica.Persona"%>
 <%@page import="java.util.Date"%>
 <%@page import="logica.Cliente"%>
 <%@page import="java.util.List"%>
@@ -51,6 +50,7 @@
             <a href="order.jsp">Orden</a>
         </nav>
         <section>
+            <!--MODIFICACION-->
             <form action="svCliente" method="get">
                 <%
                     Cliente cli = (Cliente) mysession.getAttribute("cliente");

@@ -16,6 +16,18 @@
         <servlet-name>svVenta</servlet-name>
         <servlet-class>servlet.svVenta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>svService</servlet-name>
+        <servlet-class>servlet.svService</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>svPackage</servlet-name>
+        <servlet-class>servlet.svPackage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>svSell</servlet-name>
+        <servlet-class>servlet.svSell</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>svUser</servlet-name>
         <url-pattern>/svUser</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>svVenta</servlet-name>
         <url-pattern>/svVenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>svService</servlet-name>
+        <url-pattern>/svService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>svPackage</servlet-name>
+        <url-pattern>/svPackage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>svSell</servlet-name>
+        <url-pattern>/svSell</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

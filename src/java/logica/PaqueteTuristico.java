@@ -65,6 +65,10 @@ public class PaqueteTuristico implements Serializable {
     }
     
 
+    public float calcularCostoPaq(float a) {
+        return a; 
+    }
+    
     public void add(PaqueteTuristico paqueteTuristico) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

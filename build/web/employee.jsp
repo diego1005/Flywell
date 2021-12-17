@@ -55,6 +55,7 @@
                 <button type="button" name="seform" id="seform" onclick="capaEmployee('seform')">Buscar</button>
                 <button type="button" name="neform" id="neform" onclick="capaEmployee('neform')">+</button>
             </div>
+            <!--LECTURA-->
             <div class="table-cont" id="search-table">
                 <div class="search-table-head">
                     <table>
@@ -122,10 +123,12 @@
                             <input type="hidden" name="edit" value="edit">
                             <td><button type="submit" name="eeform" id="eeform">Editar</button></td>
                         </form>
+                        <!--BAJA-->
                         <form action="svEmpleado" method="post">
                             <input type="hidden" name="id" value="<%=id%>">
                             <td><button type="submit" name="deform" id="deform">Eliminar</button></td>
                         </form>
+                            <!--BAJA-->
                         <%}
                         } else {%>
                         <td>No hay datos</td>
@@ -142,6 +145,7 @@
                     </table>
                 </div>
             </div>
+                        <!--ALTA-->
             <form action="svEmpleado" method="post">
                 <div class="table-cont" id="new-element">
                     <div class="new-element-head">
@@ -168,6 +172,7 @@
                                 <th>NACIONALIDAD</th>
                                 <th>CARGO</th>
                                 <th>SUELDO</th>
+                                <th>AGREGAR</th>
                             </tr>
                             <tr>
                                 <td><input class="new" type="text" name="dni" required></td>
@@ -178,32 +183,12 @@
                                 <td><input class="new" type="text" name="nac" required></td>
                                 <td><input class="new" type="text" name="pos" required></td>
                                 <td><input class="new" type="text" name="salary" required></td>
-                                <td><input id="send" type="submit" name="crearEmpleado" value="+"></td>
+                                <td><input id="send" type="submit" value="+"></td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </form>
-            <div class="table-cont" id="cont-user">
-                <button type="button" id="user" onclick="capaEmployee('user')">Alta Usuario</button>
-            </div>
-            <div class="new-element-second" id="new-user">
-                <table>
-                    <tr>
-                        <th>USUARIO</th>
-                        <th>CONTRASEÑA</th>
-                        <th>AGREGAR</th>
-                    </tr>
-                    <tr>
-                    <form action="svUser" method="post">
-                        <td><input class="new" type="text" name="new-user" required></td>
-                        <td><input class="new" type="password" name="new-pass" required></td>
-                        <td><input id="send" type="submit" name="crearEmpleado" value="+"></td>
-                    </form>
-                    </tr>
-                </table>
-            </div>
-            <!--</form>-->
         </section>
         <%}%>
     </body>

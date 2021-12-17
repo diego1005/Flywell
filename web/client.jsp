@@ -55,6 +55,7 @@
                 <button type="button" name="scform" id="scform" onclick="show('search-table')">Buscar</button>
                 <button type="button" name="ncform" id="ncform" onclick="show('new-element')">+</button>
             </div>
+            <!--LECTURA-->
             <div class="table-cont" id="search-table">
                 <div class="search-table-head">
                     <table>
@@ -116,10 +117,12 @@
                             <input type="hidden" name="edit" value="edit">
                             <td><button type="submit" name="ecform" id="ecform">Editar</button></td>
                         </form>
+                        <!--BAJA-->
                         <form action="svCliente" method="post">
                             <input type="hidden" name="id" value="<%=id%>">
                             <td><button type="submit" name="dcform" id="dcform">Eliminar</button></td>
                         </form>
+                            <!--BAJA-->
                         <%}
                             } else {%>
                         <td>No hay datos</td>
@@ -134,6 +137,7 @@
                     </table>
                 </div>
             </div>
+                        <!--ALTA-->
             <form action="svCliente" method="post" >
                 <div class="table-cont" id="new-element">
                     <div class="new-element-head">
@@ -170,47 +174,6 @@
                                 <td><input class="new" type="text" name="phone" required></td>
                                 <td><input class="new" type="text" name="nac" required></td>
                                 <td><input id="send" type="submit" value="+"></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </form>
-            <form action="svCliente" method="get" >
-                <div class="table-cont" id="edit-element">
-                    <div class="new-element-head">
-                        <table>
-                            <tr>
-                                <th>CLIENTE</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input class="new-head" type="text" name="name" 
-                                           placeholder="Nombre" required>
-                                    <input class="new-head" type="text" name="lastname" 
-                                           placeholder="Apellido" required="">
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="new-element-body">
-                        <table>
-                            <tr>
-                                <th>DNI</th>
-                                <th>FECHA DE NACIMIENTO</th>
-                                <th>DIRECCION</th>
-                                <th>EMAIL</th>
-                                <th>TELEFONO</th>
-                                <th>NACIONALIDAD</th>
-                                <th>MODIFICAR</th>
-                            </tr>
-                            <tr>
-                            <td><input class="new" type="text" name="dni" required></td>
-                            <td><input class="new" type="date" name="birth" required></td>
-                            <td><input class="new" type="text" name="address" required></td>
-                            <td><input class="new" type="email" name="email" required></td>
-                            <td><input class="new" type="text" name="phone" required></td>
-                            <td><input class="new" type="text" name="nac" required></td>
-                            <td><input id="send" type="submit" value="+"></td>
                             </tr>
                         </table>
                     </div>
