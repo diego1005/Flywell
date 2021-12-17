@@ -1,3 +1,7 @@
+function show(param) {
+    document.getElementById(param).style.display = "flex";
+}
+
 function capaClient(name) {
     switch (name) {
         case "scform":
@@ -29,9 +33,8 @@ function capaEmployee(name) {
             document.getElementById("new-element").style.display = "flex";
             document.getElementById("cont-user").style.display = "flex";
             break;
-        case "edit":
+        case "eeform":
             console.log("boton editar");
-            let id = document.getElementById("nid");
             document.getElementById("edit-element").style.display = "flex";
             break;
         case "get":
@@ -44,6 +47,7 @@ function capaEmployee(name) {
         default:
     }
 }
+
 function capaOrder(name) {
     switch (name) {
         case "soform":

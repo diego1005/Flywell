@@ -53,7 +53,7 @@ public class ControladoraPersistencia {
     public Usuario findUser(int id) {
         Usuario user = new Usuario();
         try {
-            userJPA.findUsuario(id);
+            user = userJPA.findUsuario(id);
         } catch (Exception ex) {
         }
         return user;
@@ -93,7 +93,7 @@ public class ControladoraPersistencia {
     public Cliente findClient(int id) {
         Cliente cli = new Cliente();
         try {
-            cliJPA.findCliente(id);
+            cli = cliJPA.findCliente(id);
         } catch (Exception ex) {
         }
         return cli;

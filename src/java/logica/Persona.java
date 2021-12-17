@@ -118,4 +118,9 @@ public class Persona implements Serializable {
         this.fecha_nac = fecha_nac;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" + "id_persona=" + id_persona + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + ", celular=" + celular + ", email=" + email + ", nacionalidad=" + nacionalidad + ", fecha_nac=" + fecha_nac + '}';
+    }
+
 }

@@ -180,6 +180,13 @@ td input {
     /*width: 100%;*/
     margin-top: 1.5%;
 }
+.table-cont-edit {
+    display: flex;
+    /*flex-direction: inherit;*/
+    justify-content: space-evenly;
+    /*width: 100%;*/
+    margin-top: 1.5%;
+}
 .search-table-head, .new-element-head {
     display: flex;
 }

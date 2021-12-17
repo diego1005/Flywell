@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Desktop/IDE/Flywell/Flywell/src/java/servlet/svEmpleado.java</file>
-            <file>file:/C:/Users/User/Desktop/IDE/Flywell/Flywell/web/employee.jsp</file>
-            <file>file:/C:/Users/User/Desktop/IDE/Flywell/Flywell/src/java/servlet/svUser.java</file>
-            <file>file:/C:/Users/User/Desktop/IDE/Flywell/Flywell/web/assets/css/estilos.css</file>
-            <file>file:/C:/Users/User/Desktop/IDE/Flywell/Flywell/src/java/servlet/svCliente.java</file>
-            <file>file:/C:/Users/User/Desktop/IDE/Flywell/Flywell/web/client.jsp</file>
-            <file>file:/C:/Users/User/Desktop/IDE/Flywell/Flywell/web/assets/js/funct.js</file>
+            <file>file:/home/diego/NetBeansProjects/Flywell/web/index.jsp</file>
+            <file>file:/home/diego/NetBeansProjects/Flywell/web/eclient.jsp</file>
+            <file>file:/home/diego/NetBeansProjects/Flywell/web/assets/css/estilos.css</file>
+            <file>file:/home/diego/NetBeansProjects/Flywell/web/assets/js/funct.js</file>
+            <file>file:/home/diego/NetBeansProjects/Flywell/web/client.jsp</file>
+            <file>file:/home/diego/NetBeansProjects/Flywell/src/java/servlet/svCliente.java</file>
         </group>
     </open-files>
 </project-private>

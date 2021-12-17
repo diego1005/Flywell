@@ -28,5 +28,10 @@ public class Cliente extends Persona implements Serializable {
     public void setListaVentas(List<Venta> listaVentas) {
         this.listaVentas = listaVentas;
     }
-    
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
 }

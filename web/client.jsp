@@ -52,8 +52,8 @@
         <section>
             <div class="cape">
                 <input type="text" name="search" id="search" placeholder="Ingrese DNI">
-                <button type="button" name="scform" id="scform" onclick="capaClient('scform')">Buscar</button>
-                <button type="button" name="ncform" id="ncform" onclick="capaClient('ncform')">+</button>
+                <button type="button" name="scform" id="scform" onclick="show('search-table')">Buscar</button>
+                <button type="button" name="ncform" id="ncform" onclick="show('new-element')">+</button>
             </div>
             <div class="table-cont" id="search-table">
                 <div class="search-table-head">
@@ -70,10 +70,10 @@
                                     for (Cliente cli : listaClientes) { %>
                             <tr>
                                 <% String nombre = cli.getNombre() + " " + cli.getApellido();%>
-                                <td><%=nombre%></td>
+                                <td id="cname"><%=nombre%></td>
                                 <%}
-                                } else {%>
-                                <td>No hay datos</td>
+                                    } else {%>
+                                <td id="clast">No hay datos</td>
                                 <%}%>
                             </tr>
                         </tbody>
@@ -95,7 +95,7 @@
                         </thead>
                         <tbody>
                             <% if (!listaClientes.isEmpty()) {
-                                    for (Cliente cli : listaClientes) { %>
+                                        for (Cliente cli : listaClientes) { %>
                             <tr>
                                 <%  int id = cli.getId_persona();
                                     String dni = cli.getDni();
@@ -105,20 +105,23 @@
                                     String tel = cli.getCelular();
                                     String nacion = cli.getNacionalidad();
                                 %>
-                                <td><%=dni%></td>
-                                <td><%=f_nac%></td>
-                                <td><%=direccion%></td>
-                                <td><%=email%></td>
-                                <td><%=tel%></td>
-                                <td><%=nacion%></td>
-                        <input type="hidden" name="id" id="nid" value="<%=id%>">
-                        <td><button type="button" name="ecform" onclick="capaEmployee('edit')" id="ecform">Editar</button></td>
+                                <td id="cdni"><%=dni%></td>
+                                <td id="cfnac"><%=f_nac%></td>
+                                <td id="cdir"><%=direccion%></td>
+                                <td id="cmail"><%=email%></td>
+                                <td id="ctel"><%=tel%></td>
+                                <td id="cnac"><%=nacion%></td>
+                        <form action="svCliente" method="post">
+                            <input type="hidden" name="id" id="nid" value="<%=id%>">
+                            <input type="hidden" name="edit" value="edit">
+                            <td><button type="submit" name="ecform" id="ecform">Editar</button></td>
+                        </form>
                         <form action="svCliente" method="post">
                             <input type="hidden" name="id" value="<%=id%>">
                             <td><button type="submit" name="dcform" id="dcform">Eliminar</button></td>
                         </form>
                         <%}
-                        } else {%>
+                            } else {%>
                         <td>No hay datos</td>
                         <td>No hay datos</td>
                         <td>No hay datos</td>
@@ -172,7 +175,7 @@
                     </div>
                 </div>
             </form>
-            <form action="svCliente" method="post" >
+            <form action="svCliente" method="get" >
                 <div class="table-cont" id="edit-element">
                     <div class="new-element-head">
                         <table>
@@ -201,8 +204,6 @@
                                 <th>MODIFICAR</th>
                             </tr>
                             <tr>
-                            <input type="hidden" name="id" value="capaEmployee('get')">
-                            <input type="hidden" name="edit" value="edit">
                             <td><input class="new" type="text" name="dni" required></td>
                             <td><input class="new" type="date" name="birth" required></td>
                             <td><input class="new" type="text" name="address" required></td>
