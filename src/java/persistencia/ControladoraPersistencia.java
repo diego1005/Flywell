@@ -162,9 +162,10 @@ public class ControladoraPersistencia {
     }
 
     public List<Servicio> findServices() {
-        List<Servicio> listaServices = new ArrayList<Servicio>();
+        List<Servicio> listaServices = new ArrayList();
         try {
             listaServices = servJPA.findServicioEntities();
+            System.out.println(listaServices.get(1));
         } catch (Exception ex) {
         }
         return listaServices;

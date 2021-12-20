@@ -135,14 +135,15 @@
                                 <%
                                     List<Servicio> listaServ = control.listarServicios();
                                     for (Servicio serv : listaServ) {
+                                        int idS = serv.getCod_servicio();
                                         String nombre_serv = serv.getNombre();
                                         String dest_serv = serv.getDestino();
                                         float costo_serv = serv.getCosto_servicio();
                                 %>
                                 <td class="checklist">
-                                    <input type="checkbox" name="listaServ" value="<%=serv.getCod_servicio()%>" style="display:none" readonly />
+                                    <input type="checkbox" name="listServ" value="<%=idS%>" style="display:none" readonly />
                                 </td>
-                                 <td><input type="checkbox" name="nombreServ" value="<%=serv.getNombre()%>" /><%=serv.getNombre()%></td>
+                                 <td><input type="checkbox" name="nombreServ" value="<%=nombre_serv%>" /></td>
                                 <td><input type="hidden" name="costoServ" value="<%=costo_serv%>" /></td>
                             </tr>
                         </table>

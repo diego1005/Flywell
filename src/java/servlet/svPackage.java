@@ -39,7 +39,6 @@ public class svPackage extends HttpServlet {
 //        request.getSession().setAttribute("listaPaquetes", control.listarPaquetesTuristicos());
 //
 //        response.sendRedirect("package.jsp");
-
     }
 
     @Override
@@ -53,14 +52,16 @@ public class svPackage extends HttpServlet {
 
         if (id == null && edit == null) {
             //Parametros Alta
-            String[] listaServId = request.getParameterValues("listServ");
-            for (String hg : listaServId) {
-                System.out.println(hg);
-            }
-            List<Servicio> listaServ = new ArrayList();
-            for (String idS : listaServId) {
-                listaServ.add(control.listarServicio(Integer.parseInt(idS)));
-            }
+
+            System.out.println(request.getParameterValues("listServ"));
+//            for (String hg : listaServId) {
+//                System.out.println(hg);
+//            }
+//            List<Servicio> listaServ = new ArrayList();
+//            for (String idS : listaServId) {
+//                listaServ.add(control.listarServicio(Integer.parseInt(idS)));
+//            }
+
             String[] costos_serv = request.getParameterValues("costoServ");
             float costo_total = 0;
             for (String costo : costos_serv) {
@@ -70,7 +71,7 @@ public class svPackage extends HttpServlet {
             //Alta
             PaqueteTuristico paq = new PaqueteTuristico();
             float costo_serv = paq.calcularCostoPaq(costo_total);
-            paq.setListaServicios(listaServ);
+            //paq.setListaServicios(listaServ);
             paq.setCosto_paquete(costo_serv);
 
             control.crearPaqueteTuristico(paq);
