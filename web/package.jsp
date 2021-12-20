@@ -53,8 +53,8 @@
         <section>
             <div class="cape">
                 <input type="text" name="search" id="search" placeholder="Ingrese NRO">
-                <button type="button" name="ssform" id="ssform" onclick="show('search-table')">Buscar</button>
-                <button type="button" name="ncform" id="nsform" onclick="show('new-element')">+</button>
+                <button type="button" onclick="show('search-table')">Buscar</button>
+                <button type="button" onclick="show('new-element')">+</button>
             </div>
             <!--LECTURA-->
             <div class="table-cont" id="search-table">
@@ -62,26 +62,28 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>SERVICIO</th>
+                                <th>SERVICIOS</th>
                             </tr>
                         </thead>    
                         <tbody>
                             <%  Controladora control = new Controladora();
-                                List<Servicio> listaServicios = control.listarServicios();
-                                if (!listaServicios.isEmpty()) {
-                                    for (Servicio serv : listaServicios) { %>
+                                List<PaqueteTuristico> listaPaquetes = control.listarPaquetesTuristicos();
+                                List<Servicio> listaServ = null;
+                                if (!listaPaquetes.isEmpty()) {
+                                    for (PaqueteTuristico paq : listaPaquetes) { %>
                             <tr>
-                                <% String nombre_serv = serv.getNombre();%>
-                        <select>
-                            <option>
-                            <td id="name"><%=nombre_serv%></td>
-                            </option>
-                        </select>
-                        <%}
-                                } else {%>
-                        <td id="name">No hay datos</td>
-                        <%}%>
-                        </tr>
+                                <% listaServ = paq.getListaServicios();
+                                    String nombre_serv = "";
+                                    for (Servicio serv : listaServ) {
+                                        nombre_serv = serv.getNombre();
+                                    }
+                                %>
+                                <td><%=nombre_serv%></td>
+                                    <%}
+                                    } else {%>
+                                <td id="name">No hay datos</td>
+                                <%}%>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -89,35 +91,29 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>DESCRIPCION</th>
-                                <th>DESTINO</th>
-                                <th>COSTO</th>
-                                <th>FECHA_SERVICIO</th>
+                                <th>COSTO DEL PAQUETE</th>
                                 <th>EDITAR</th>
                                 <th>ELIMINAR</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% if (!listaServicios.isEmpty()) {
-                                    for (Servicio serv : listaServicios) { %>
+                            <% if (!(listaServ == null)) {
+                                    for (Servicio serv : listaServ) { %>
                             <tr>
                                 <%  int id = serv.getCod_servicio();%>
                         <form action="svService" method="post">
                             <input type="hidden" name="id" id="nid" value="<%=id%>">
                             <input type="hidden" name="edit" value="edit">
-                            <td><button type="submit" name="esform" id="esform">Editar</button></td>
+                            <td><button type="submit" id="edi">Editar</button></td>
                         </form>
                         <!--BAJA-->
                         <form action="svService" method="post">
                             <input type="hidden" name="id" value="<%=id%>">
-                            <td><button type="submit" name="dsform" id="dsform">Eliminar</button></td>
+                            <td><button type="submit" id="eli">Eliminar</button></td>
                         </form>
                         <!--BAJA-->
                         <%}
                         } else {%>
-                        <td>No hay datos</td>
-                        <td>No hay datos</td>
-                        <td>No hay datos</td>
                         <td>No hay datos</td>
                         <%}%>
                         </tr>
@@ -127,33 +123,45 @@
             </div>
             <!--ALTA-->
             <form action="svService" method="post">
-                <div class="table-cont" id="new-element">
-                    <div class="new-element-head">
+                <div class="table-paq-cont" id="new-element">
+                    <div class="new-element-paq-head">
                         <table>
                             <tr>
                                 <th>SERVICIO</th>
                             </tr>
                             <tr>
-                                <td>
-                                    <input class="new" type="text" name="name">
+                                <td class="checklist">
+                                    <input type="checkbox" name="listaServ">Hotel por noche/s</input>
+                                    <input type="checkbox" name="listaServ">
+                                    Alquiler de Auto
+                                    </input>
+                                    <input type="checkbox" name="listaServ">
+                                    Pasaje de Omnibus
+                                    </input>
+                                    <input type="checkbox" name="listaServ">
+                                    Pasaje de Avion
+                                    </input>
+                                    <input type="checkbox" name="listaServ">
+                                    Pasaje de Tren
+                                    </input>
+                                    <input type="checkbox" name="listaServ">
+                                    Excursiones
+                                    </input>
+                                    <input type="checkbox" name="listaServ">
+                                    Ticket Eventos
+                                    </input>
                                 </td>
                             </tr>
                         </table>
                     </div>
-                    <div class="new-element-body">
+                    <div class="new-element-paq-body">
                         <table>
                             <tr>
-                                <th>DESCRIPCION</th>
-                                <th>DESTINO</th>
-                                <th>COSTO</th>
-                                <th>FECHA_SERVICIO</th>
+                                <th>COSTO DEL PAQUETE</th>
                                 <th>AGREGAR</th>
                             </tr>
                             <tr>
-                                <td><input class="new" type="text" name="desc" required></td>
-                                <td><input class="new" type="date" name="dest" required></td>
-                                <td><input class="new" type="text" name="cost" required></td>
-                                <td><input class="new" type="email" name="f_serv" required></td>
+                                <td><input class="new" type="text" name="c_paq" required></td>
                                 <td><input id="send" type="submit" value="+"></td>
                             </tr>
                         </table>

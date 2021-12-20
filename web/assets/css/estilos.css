@@ -19,6 +19,12 @@ hr {
     margin-bottom: 1%;
     border: 2px solid rgba(48,47,45,0.7);
 }
+h4 {
+    margin: 0 5%;
+}
+select {
+    font-size: 1.2em;
+}
 .header-left {
     width: 50%;
     text-align: center;
@@ -147,7 +153,7 @@ section h3 {
     opacity: 0.5;
 }
 #send {
-    width: 100%;
+    width: 65%;
     font-size: 1.5em;
     font-family: Montserrat, sans-serif;
     font-weight: bold;
@@ -171,7 +177,8 @@ table {
     border-left: 12px solid transparent;
 }
 td input {
-    width: 75%;
+    width: 85%;
+    font-size: 1em;
 }
 .table-cont {
     display: none;
@@ -179,6 +186,14 @@ td input {
     justify-content: space-evenly;
     /*width: 100%;*/
     margin-top: 1.5%;
+}
+.table-paq-cont {
+    display: none;
+    /*flex-direction: inherit;*/
+    justify-content: center;
+    width: 100%;
+    margin-top: 1.5%;
+
 }
 .table-cont-edit {
     display: flex;
@@ -205,6 +220,18 @@ td input {
     text-align: center;
     border-top: 1px solid black;
 }
+.new-element-paq-head {
+    width: 19%;
+    margin-top: 2%;
+    text-align: center;
+    border-top: 1px solid black;
+}
+.new-element-paq-body {
+    width: 22%;
+    margin: auto 0;
+    text-align: center;
+    border-top: 1px solid black;
+}
 .new-element-second {
     display: none;
     text-align: center;
@@ -213,10 +240,10 @@ td input {
     border: none;
     margin-top: 2%;
 }
-#dcform, #deform {
+#eli {
     background-color: rgba(220,20,60,0.5);
 }
-#eeform, #ecform {
+#ede {
     background-color: rgba(70,130,180,0.5);
 }
 .login {
@@ -253,4 +280,7 @@ td input {
 }
 .login p {
     text-align: center;
+}
+.checklist {
+
 }

@@ -23,7 +23,7 @@ public class svService extends HttpServlet {
             throws ServletException, IOException {
 
         int id = Integer.parseInt(request.getParameter("id"));
-        String nombre = request.getParameter("name");
+        String nombre = request.getParameter("s_name");
         String descripcion = request.getParameter("desc");
         String destino = request.getParameter("dest");
         float costo = Float.parseFloat(request.getParameter("cost"));
@@ -55,7 +55,8 @@ public class svService extends HttpServlet {
 
         if (id == null && edit == null) {
             //Parametros Alta
-            String nombre = request.getParameter("name");
+            String nombre = request.getParameter("s_name");
+            System.out.println(nombre);
             String descripcion = request.getParameter("desc");
             String destino = request.getParameter("dest");
             float costo = Float.parseFloat(request.getParameter("cost"));
@@ -79,7 +80,7 @@ public class svService extends HttpServlet {
             Servicio servicio = control.listarServicio(nid);
 
             HttpSession mysession = request.getSession();
-            mysession.setAttribute("service", servicio);
+            mysession.setAttribute("servicio", servicio);
 
             response.sendRedirect("eservice.jsp");
         }

@@ -173,7 +173,7 @@ public class ControladoraPersistencia {
     public Servicio findService(int id) {
         Servicio serv = new Servicio();
         try {
-            servJPA.findServicio(id);
+            serv = servJPA.findServicio(id);
         } catch (Exception ex) {
         }
         return serv;

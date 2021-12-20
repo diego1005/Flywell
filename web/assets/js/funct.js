@@ -1,5 +1,5 @@
-function show(param) {
-    document.getElementById(param).style.display = "flex";
+function show(fparam, sparam) {
+        document.getElementById(fparam).style.display = "flex";
 }
 
 function capaClient(name) {

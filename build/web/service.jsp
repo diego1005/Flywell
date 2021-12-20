@@ -52,8 +52,8 @@
         <section>
             <div class="cape">
                 <input type="text" name="search" id="search" placeholder="Ingrese NRO">
-                <button type="button" name="ssform" id="ssform" onclick="show('search-table')">Buscar</button>
-                <button type="button" name="ncform" id="nsform" onclick="show('new-element')">+</button>
+                <button type="button" onclick="show('search-table')">Buscar</button>
+                <button type="button" onclick="show('new-element')">+</button>
             </div>
             <!--LECTURA-->
             <div class="table-cont" id="search-table">
@@ -109,12 +109,12 @@
                         <form action="svService" method="post">
                             <input type="hidden" name="id" id="nid" value="<%=id%>">
                             <input type="hidden" name="edit" value="edit">
-                            <td><button type="submit" name="esform" id="esform">Editar</button></td>
+                            <td><button type="submit" id="ede">Editar</button></td>
                         </form>
                         <!--BAJA-->
                         <form action="svService" method="post">
                             <input type="hidden" name="id" value="<%=id%>">
-                            <td><button type="submit" name="dsform" id="dsform">Eliminar</button></td>
+                            <td><button type="submit" id="eli">Eliminar</button></td>
                         </form>
                         <!--BAJA-->
                         <%}
@@ -139,26 +139,26 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <select>
-                                        <option class="new" type="text" name="hotel">
+                                    <select name="s_name">
+                                        <option class="new" type="text" value="Hotel por noche/s">
                                             Hotel por noche/s
                                         </option>
-                                        <option class="new" type="text" name="auto">
+                                        <option class="new" type="text" value="Alquiler de Auto">
                                             Alquiler de Auto
                                         </option>
-                                        <option class="new" type="text" name="bus">
+                                        <option class="new" type="text" value="Pasaje Omnibus">
                                             Pasaje Omnibus
                                         </option>
-                                        <option class="new" type="text" name="plane">
+                                        <option class="new" type="text" value="Pasaje Avion">
                                             Pasaje Avion
                                         </option>
-                                        <option class="new" type="text" name="train">
+                                        <option class="new" type="text" value="Pasaje Tren">
                                             Pasaje Tren
                                         </option>
-                                        <option class="new" type="text" name="exc">
+                                        <option class="new" type="text" value="Excursiones">
                                             Excursiones
                                         </option>
-                                        <option class="new" type="text" name="evt">
+                                        <option class="new" type="text" value="Ticket Eventos">
                                             Ticket Eventos
                                         </option>
                                     </select>

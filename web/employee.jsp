@@ -52,8 +52,8 @@
         <section>
             <div class="cape">
                 <input type="text" name="search" id="search" placeholder="Ingrese DNI">
-                <button type="button" name="seform" id="seform" onclick="capaEmployee('seform')">Buscar</button>
-                <button type="button" name="neform" id="neform" onclick="capaEmployee('neform')">+</button>
+                <button type="button" onclick="show('search-table')">Buscar</button>
+                <button type="button" onclick="show('new-element')">+</button>
             </div>
             <!--LECTURA-->
             <div class="table-cont" id="search-table">
@@ -121,12 +121,12 @@
                         <form action="svEmpleado" method="post">
                             <input type="hidden" name="id" value="<%=id%>">
                             <input type="hidden" name="edit" value="edit">
-                            <td><button type="submit" name="eeform" id="eeform">Editar</button></td>
+                            <td><button type="submit" id="ede">Editar</button></td>
                         </form>
                         <!--BAJA-->
                         <form action="svEmpleado" method="post">
                             <input type="hidden" name="id" value="<%=id%>">
-                            <td><button type="submit" name="deform" id="deform">Eliminar</button></td>
+                            <td><button type="submit" id="eli">Eliminar</button></td>
                         </form>
                             <!--BAJA-->
                         <%}

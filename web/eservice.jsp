@@ -59,30 +59,32 @@
                     <div class="new-element-head">
                         <table>
                             <tr>
+                                <th>SELECCIONADO</th>
                                 <th>SERVICIO</th>
                             </tr>
                             <tr>
+                                <td><h4><%=serv.getNombre()%></h4></td>
                                 <td>
-                                  <select>
-                                        <option class="new" type="text" name="hotel">
+                                    <select name="s_name">
+                                        <option class="new" type="text" value="Hotel por noche/s">
                                             Hotel por noche/s
                                         </option>
-                                        <option class="new" type="text" name="auto">
+                                        <option class="new" type="text" value="Alquiler de Auto">
                                             Alquiler de Auto
                                         </option>
-                                        <option class="new" type="text" name="bus">
+                                        <option class="new" type="text" value="Pasaje Omnibus">
                                             Pasaje Omnibus
                                         </option>
-                                        <option class="new" type="text" name="plane">
+                                        <option class="new" type="text" value="Pasaje Avion">
                                             Pasaje Avion
                                         </option>
-                                        <option class="new" type="text" name="train">
+                                        <option class="new" type="text" value="Pasaje Tren">
                                             Pasaje Tren
                                         </option>
-                                        <option class="new" type="text" name="exc">
+                                        <option class="new" type="text" value="Excursiones">
                                             Excursiones
                                         </option>
-                                        <option class="new" type="text" name="evt">
+                                        <option class="new" type="text" value="Ticket Eventos">
                                             Ticket Eventos
                                         </option>
                                     </select>
