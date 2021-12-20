@@ -162,6 +162,14 @@ section h3 {
     /*margin: 3% 10%;*/
     text-align: center;
 }
+#sendPaq {
+    width: 80%;
+    margin-top: 10%;
+    color: lightgray;
+    background-color: transparent;
+    border: 1px solid lightgray;
+    border-radius: 50px;
+}
 #user {
     font-size: 1.5em;
     color: lightgrey;
@@ -177,8 +185,11 @@ table {
     border-left: 12px solid transparent;
 }
 td input {
-    width: 85%;
+    width: 86%;
     font-size: 1em;
+}
+th {
+    border-left: 12px solid transparent;
 }
 .table-cont {
     display: none;
@@ -190,7 +201,7 @@ td input {
 .table-paq-cont {
     display: none;
     /*flex-direction: inherit;*/
-    justify-content: center;
+    justify-content: space-evenly;
     width: 100%;
     margin-top: 1.5%;
 
@@ -221,16 +232,18 @@ td input {
     border-top: 1px solid black;
 }
 .new-element-paq-head {
-    width: 19%;
-    margin-top: 2%;
+    width: 12%;
+    /*margin-top: 2%;*/
+    margin-right: 5%;
     text-align: center;
-    border-top: 1px solid black;
+    /*border-top: 1px solid black;*/
 }
 .new-element-paq-body {
-    width: 22%;
-    margin: auto 0;
+    width: 29%;
+    margin-left: 1%;
+    /*margin: auto 0;*/
     text-align: center;
-    border-top: 1px solid black;
+    /*border-top: 1px solid black;*/
 }
 .new-element-second {
     display: none;
@@ -282,5 +295,5 @@ td input {
     text-align: center;
 }
 .checklist {
-
+    width: 22%;
 }

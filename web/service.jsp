@@ -177,7 +177,15 @@
                             </tr>
                             <tr>
                                 <td><input class="new" type="text" name="desc" required></td>
-                                <td><input class="new" type="text" name="dest" required></td>
+                                <td>
+                                    <select name="dest">
+                                        <option value="Mendoza">Mendoza</option>
+                                        <option value="Buenos Aires">Buenos Aires</option>
+                                        <option value="Rosario">Rosario</option>
+                                        <option value="Cordoba">Cordoba</option>
+                                        <option value="Misiones">Misiones</option>
+                                    </select>
+                                </td>
                                 <td><input class="new" type="text" name="cost" required></td>
                                 <td><input class="new" type="date" name="f_serv" required></td>
                                 <td><input id="send" type="submit" value="+"></td>

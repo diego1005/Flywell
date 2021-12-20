@@ -68,19 +68,19 @@
                         <tbody>
                             <%  Controladora control = new Controladora();
                                 List<PaqueteTuristico> listaPaquetes = control.listarPaquetesTuristicos();
-                                List<Servicio> listaServ = null;
+                                List<Servicio> listaServEnPaq = null;
                                 if (!listaPaquetes.isEmpty()) {
                                     for (PaqueteTuristico paq : listaPaquetes) { %>
                             <tr>
-                                <% listaServ = paq.getListaServicios();
+                                <% listaServEnPaq = paq.getListaServicios();
                                     String nombre_serv = "";
-                                    for (Servicio serv : listaServ) {
+                                    for (Servicio serv : listaServEnPaq) {
                                         nombre_serv = serv.getNombre();
                                     }
                                 %>
                                 <td><%=nombre_serv%></td>
-                                    <%}
-                                    } else {%>
+                                <%}
+                                } else {%>
                                 <td id="name">No hay datos</td>
                                 <%}%>
                             </tr>
@@ -97,10 +97,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% if (!(listaServ == null)) {
-                                    for (Servicio serv : listaServ) { %>
+                            <% if (!(listaPaquetes.isEmpty())) {
+                                    for (PaqueteTuristico paq : listaPaquetes) { %>
                             <tr>
-                                <%  int id = serv.getCod_servicio();%>
+                                <%  int id = paq.getCod_paquete();
+                                    float costo_paq = paq.getCosto_paquete();%>
+                                <td name="costoPaq"><%=costo_paq%></td>
                         <form action="svService" method="post">
                             <input type="hidden" name="id" id="nid" value="<%=id%>">
                             <input type="hidden" name="edit" value="edit">
@@ -122,7 +124,7 @@
                 </div>
             </div>
             <!--ALTA-->
-            <form action="svService" method="post">
+            <form action="svPackage" method="post">
                 <div class="table-paq-cont" id="new-element">
                     <div class="new-element-paq-head">
                         <table>
@@ -130,41 +132,35 @@
                                 <th>SERVICIO</th>
                             </tr>
                             <tr>
+                                <%
+                                    List<Servicio> listaServ = control.listarServicios();
+                                    for (Servicio serv : listaServ) {
+                                        String nombre_serv = serv.getNombre();
+                                        String dest_serv = serv.getDestino();
+                                        float costo_serv = serv.getCosto_servicio();
+                                %>
                                 <td class="checklist">
-                                    <input type="checkbox" name="listaServ">Hotel por noche/s</input>
-                                    <input type="checkbox" name="listaServ">
-                                    Alquiler de Auto
-                                    </input>
-                                    <input type="checkbox" name="listaServ">
-                                    Pasaje de Omnibus
-                                    </input>
-                                    <input type="checkbox" name="listaServ">
-                                    Pasaje de Avion
-                                    </input>
-                                    <input type="checkbox" name="listaServ">
-                                    Pasaje de Tren
-                                    </input>
-                                    <input type="checkbox" name="listaServ">
-                                    Excursiones
-                                    </input>
-                                    <input type="checkbox" name="listaServ">
-                                    Ticket Eventos
-                                    </input>
+                                    <input type="checkbox" name="listaServ" value="<%=serv.getCod_servicio()%>" style="display:none" readonly />
                                 </td>
+                                 <td><input type="checkbox" name="nombreServ" value="<%=serv.getNombre()%>" /><%=serv.getNombre()%></td>
+                                <td><input type="hidden" name="costoServ" value="<%=costo_serv%>" /></td>
                             </tr>
                         </table>
                     </div>
                     <div class="new-element-paq-body">
                         <table>
                             <tr>
-                                <th>COSTO DEL PAQUETE</th>
-                                <th>AGREGAR</th>
+                                <th>DESTINO</th>
+                                <th>COSTO SERVICIO</th>
                             </tr>
                             <tr>
-                                <td><input class="new" type="text" name="c_paq" required></td>
-                                <td><input id="send" type="submit" value="+"></td>
+                                <td id="dest"><%=dest_serv%></td>
+                                <td id="cost"><%=costo_serv%></td>
                             </tr>
                         </table>
+                        <%}%>
+                        <h3></h3>
+                        <td><input id="sendPaq" type="submit" value="AGREGAR"></td>
                     </div>
                 </div>
             </form>
